@@ -2,6 +2,16 @@
 import React from 'react'
 import useFetch from '@/app/(hooks)/useFetch'
 import Loading from './Loading/Loading';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from 'embla-carousel-autoplay'
+import Link from 'next/link';
+import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
 
 const Hero = () => {
   const apiUrl = 'http://localhost:3000/shoes';
@@ -22,24 +32,49 @@ const Hero = () => {
       </div>
     );
   }
-
+  
   return (
     <div className='grid gap-4'>
-      <div>
-        <img
-          className="h-auto max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
-          alt=""
-        />
+        <div>
+      <div className='justify-center items-center flex'>
+        {
+          data && data.map((items) =>(
+            <div key={items.id}>
+                 <Carousel
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
+    >
+       <CarouselContent>
+        <CarouselItem>
+        <img src={items.image} width={600} height={600} alt={items.name} />
+        </CarouselItem>
+       </CarouselContent>
+    </Carousel>
+            </div>
+          ))
+        }
+      </div>
       </div>
       <div className='grid grid-cols-5 gap-4'>
-        
+
           {data && data.map((item) => (
-            <div key={item.id}>
+            <HoverCard>
+              <HoverCardTrigger>
+            <Link key={item.id} href={`/items-page/${item.id}`}>
               <img src={item.image} className='h-auto max-w-full rounded-lg' />
               <p>{item.name}</p>
               <p></p>
-            </div>
+            </Link>
+            </HoverCardTrigger>
+            <HoverCardContent>
+              <div>
+                <img src={item.image} />
+              </div>
+            </HoverCardContent>
+            </HoverCard>
           ))}
         
       </div>

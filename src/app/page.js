@@ -10,8 +10,9 @@ const App = () => {
     <div>
       <Navbar />
 
-
+      <div className='p-4 sm:p-9'>
       <Hero />
+      </div>
       </div>
   )
 }
