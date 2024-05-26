@@ -103,19 +103,16 @@ const Hero = () => {
                 <img src={item.image} />
               </div>
 
-              <Button variant={'default'} size={'sm'} onClick={() =>toast('Succesfully add to Kart',{
-                description:'added to kart ',
-                action:{
-                  label:'Undo',
-                  onClick:() => console.log('undo')
-                }
-              })}>
+              <Button variant={'default'} size={'sm'} onClick={() =>toast.success('Succesfully add to Kart')}>
                 add to kart
               </Button>
             </HoverCardContent>
             </HoverCard>
           ))}
-        <Toaster />
+        <Toaster  position='top-center' expand={false} richColors  toastOptions={{
+    style: { background: 'lightblue' },
+    className: 'my-toast',
+  }}  visibleToasts={9}/>
       </div>
       </div>
   

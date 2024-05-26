@@ -8,9 +8,7 @@ const MyKart = () => {
 
 
 
-      {
-        
-      }
+    
     </div>
   )
 }
