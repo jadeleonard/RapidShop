@@ -12,6 +12,21 @@ import {
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link';
 import {HoverCard, HoverCardTrigger, HoverCardContent} from '@/components/ui/hover-card'
+import { toast,Toaster } from 'sonner';
+
+
+
+
+
+
+
+
+
+
+
+
+import { Button } from './ui/button';
+
 
 const Hero = () => {
   const apiUrl = 'http://localhost:3000/shoes';
@@ -67,16 +82,38 @@ const Hero = () => {
               <img src={item.image} className='h-auto max-w-full rounded-lg' />
               <p>{item.name}</p>
               <p></p>
+          
             </Link>
+
+            <Button variant={'default'} size={'sm'} onClick={() =>toast('Succesfully add to Kart',{
+                description:'added to kart ',
+                action:{
+                  label:'Undo',
+                  onClick:() => console.log('undo')
+                }
+              })}>
+                add to kart
+              </Button>
+              
             </HoverCardTrigger>
             <HoverCardContent>
               <div>
                 <img src={item.image} />
               </div>
+
+              <Button variant={'default'} size={'sm'} onClick={() =>toast('Succesfully add to Kart',{
+                description:'added to kart ',
+                action:{
+                  label:'Undo',
+                  onClick:() => console.log('undo')
+                }
+              })}>
+                add to kart
+              </Button>
             </HoverCardContent>
             </HoverCard>
           ))}
-        
+        <Toaster />
       </div>
     </div>
   );
