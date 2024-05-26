@@ -1,7 +1,15 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-export default clerkMiddleware();
+export function middleware(req) {
+  const res = NextResponse.next();
+  res.headers.set('Access-Control-Allow-Origin', '*');
+  res.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-};
+
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 204 });
+  }
+
+  return res;
+}
