@@ -1,38 +1,31 @@
+
 'use client'
 import React from 'react'
 import useFetch from './useFetch'
-
-type heroProps = {
-    id:string
+import { apiHero } from '@/app/lib/api'
+type heroProps ={
     title:string
-    description:string
     image:string
+    id:string
 }
-const Hero : React.FC = () => {
-    const {data,error,loading} = useFetch<heroProps[]>(process.env.NEXT_PUBLIC_API_HERO_CONTENT!,);
-    if(loading){
-        return <div>Loading....</div>
-    }
-    if(error){
-        return <div>Error</div>
-    }
+const Hero = () => {
+const {error,data,loading} = useFetch<heroProps[]>(apiHero!);
+if(error){
+    return <div>Error</div>
+}
+if(loading){
+    return <div>Loading .....</div>
+}
   return (
-    <div className='flex justify-center pt-10 sm:p-14 lg:pt-14'>
-      
-
-        {
-            data && data?.map((items) =>(
-                <div key={items.id}>
-                        
-                    <p>{items.title}</p>
-                    <p>{items.description}</p>
-                    <img src={items.image} />
-                </div>
-            ))
-        }
-
-
-
+    <div>
+      {
+        data && data?.map((items) =>(
+            <div key={items.id}>
+                <img src={items.image} width={600} height={600} />
+                
+            </div>
+        ))
+      }
     </div>
   )
 }
