@@ -11,7 +11,7 @@ type createUserProps = {
     name:string
     email:string
     password:string
-    birthday:string
+    birthday: string
     city:string
 }
 
