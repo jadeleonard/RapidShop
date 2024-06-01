@@ -5,6 +5,7 @@ import { apiHero } from '@/app/lib/api'
 import { Button } from '@/components/ui/button'
 
 import Link from 'next/link'
+import Loading from '../Loading'
 
 type HeroProps = {
     title: string
@@ -21,12 +22,12 @@ const Hero: React.FC = () => {
     }
 
     if (loading) {
-        return <div>Loading ...</div>
+        return <div><Loading /></div>
     }
 
     
     return (
-        <section className='flex item-center justify-center h-screen py-2 px-2 bg-gradient-to-r from-cyan-200 to-blue-500'>
+        <section className='flex item-center justify-center h-screen bg-gradient-to-r from-cyan-200 to-blue-500'>
            {
             data && data?.map((items) =>(
              <div className='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16'>

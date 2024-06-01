@@ -14,10 +14,10 @@ type CardProps = {
     id:string
     
 }
-export default function CardForm ({name,content,header,sold,url}:CardProps){
+export default function CardForm ({name,content,header,sold,url,id}:CardProps){
 
     return(
-        <Link href={`${url}`}>
+        <Link href={`/item-page/${url}/${id}`}>
         <Card>
             <CardHeader>
                 {header}

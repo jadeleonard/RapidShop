@@ -1,22 +1,29 @@
-import React from 'react'
-import Hero from './Components/hook/Hero'
-import CardForm from '@/components/Card'
+import React from 'react';
+import Hero from './Components/hook/Hero';
+import { Button } from '@/components/ui/button';
+import Navbar from './Components/Navbar';
+
 
 const App = () => {
   return (
     <div>
       <nav>
 
+    <Navbar />
 
       </nav>
       <main>
-        <div className='py-10'>
+       
       <Hero />
-      </div>
-      <CardForm name='Card' price='2424' header='Header' content='ada' sold='1.2k'/>
+   
+      
+
       </main>
       <footer>
         
+
+
+
       </footer>
     </div>
   )
